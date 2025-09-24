@@ -16,6 +16,190 @@ plt.style.use('default')
 sns.set_palette("husl")
 plt.rcParams['figure.figsize'] = (12, 8)
 
+
+## Variable Related Functions
+def get_display_names():
+    """
+    Retorna mapeamento de nomes técnicos para nomes mais descritivos para exibição.
+    """
+    display_mapping = {
+        'Unit1': 'UTI Médica',
+        'Unit2': 'UTI Cirúrgica', 
+        'Gender': 'Gênero',
+        'Age': 'Idade',
+        'HR': 'Freq. Cardíaca',
+        'SBP': 'PA Sistólica',
+        'DBP': 'PA Diastólica',
+        'MAP': 'PA Média',
+        'Temp': 'Temperatura',
+        'Resp': 'Freq. Respiratória',
+        'O2Sat': 'Saturação O2',
+        'HospAdmTime': 'Tempo Internação',
+        'ICULOS': 'Tempo UTI'
+    }
+    return display_mapping
+
+def apply_display_names(df, columns_to_map=None):
+    """
+    Aplica nomes mais descritivos às colunas para exibição (não altera dados originais).
+    """
+    display_mapping = get_display_names()
+    df_display = df.copy()
+    
+    if columns_to_map is None:
+        columns_to_map = df_display.columns
+    
+    # Renomeia apenas as colunas que têm mapeamento
+    rename_dict = {col: display_mapping.get(col, col) for col in columns_to_map if col in display_mapping}
+    df_display = df_display.rename(columns=rename_dict)
+    
+    return df_display, rename_dict
+
+def get_variable_descriptions():
+    """
+    Retorna descrições detalhadas das variáveis do dataset PhysioNet 2019 Challenge.
+    """
+    descriptions = {
+        # Identificadores e tempo
+        'Hour': 'Hora desde a admissão na UTI (0-335+ horas)',
+        'ICULOS': 'Duração da estadia na UTI em horas',
+        
+        # Sinais vitais
+        'HR': 'Frequência cardíaca (batimentos por minuto)',
+        'O2Sat': 'Saturação de oxigênio periférico (%)',
+        'Temp': 'Temperatura corporal (°C)',
+        'SBP': 'Pressão arterial sistólica (mmHg)',
+        'MAP': 'Pressão arterial média (mmHg)',
+        'DBP': 'Pressão arterial diastólica (mmHg)',
+        'Resp': 'Taxa respiratória (respirações por minuto)',
+        
+        # Gases sanguíneos
+        'EtCO2': 'CO2 expirado (mmHg)',
+        'BaseExcess': 'Excesso de base (mmol/L)',
+        'HCO3': 'Bicarbonato (mmol/L)',
+        'FiO2': 'Fração inspirada de oxigênio (0.0-1.0)',
+        'pH': 'pH arterial',
+        'PaCO2': 'Pressão parcial de CO2 arterial (mmHg)',
+        'SaO2': 'Saturação de oxigênio arterial (%)',
+        
+        # Exames laboratoriais
+        'AST': 'Aspartato aminotransferase (IU/L)',
+        'BUN': 'Ureia (mg/dL)',
+        'Alkalinephos': 'Fosfatase alcalina (IU/L)',
+        'Calcium': 'Cálcio (mg/dL)',
+        'Chloride': 'Cloreto (mmol/L)',
+        'Creatinine': 'Creatinina (mg/dL)',
+        'Bilirubin_direct': 'Bilirrubina direta (mg/dL)',
+        'Glucose': 'Glicose (mg/dL)',
+        'Lactate': 'Lactato (mmol/L)',
+        'Magnesium': 'Magnésio (mmol/L)',
+        'Phosphate': 'Fosfato (mg/dL)',
+        'Potassium': 'Potássio (mmol/L)',
+        'Bilirubin_total': 'Bilirrubina total (mg/dL)',
+        'TroponinI': 'Troponina I (ng/mL)',
+        
+        # Hematologia
+        'Hct': 'Hematócrito (%)',
+        'Hgb': 'Hemoglobina (g/dL)',
+        'PTT': 'Tempo de tromboplastina parcial (segundos)',
+        'WBC': 'Contagem de glóbulos brancos (1000/uL)',
+        'Fibrinogen': 'Fibrinogênio (mg/dL)',
+        'Platelets': 'Contagem de plaquetas (1000/uL)',
+        
+        # Informações demográficas e administrativas
+        'Age': 'Idade do paciente (anos)',
+        'Gender': 'Gênero do paciente (0=Feminino, 1=Masculino)',
+        'Unit1': 'Tipo de UTI - Unidade Médica (0=Não, 1=Sim)',
+        'Unit2': 'Tipo de UTI - Unidade Cirúrgica/Cardiológica (0=Não, 1=Sim)',
+        'HospAdmTime': 'Tempo entre admissão hospitalar e UTI (horas, valores negativos = admissão direta)',
+        
+        # Variável alvo
+        'SepsisLabel': 'Rótulo de sepsis (0=Não-Sepsis, 1=Sepsis)'
+    }
+    
+    return descriptions
+
+def explain_variable(variable_name):
+    """
+    Explica uma variável específica do dataset.
+    """
+    descriptions = get_variable_descriptions()
+    
+    if variable_name in descriptions:
+        print(f"\n=== EXPLICAÇÃO DA VARIÁVEL: {variable_name} ===")
+        print(f"Descrição: {descriptions[variable_name]}")
+        
+        # Informações adicionais específicas por tipo
+        if variable_name in ['Unit1', 'Unit2']:
+            print(f"\nInformações adicionais:")
+            print("• São variáveis binárias mutuamente exclusivas")
+            print("• Representam o tipo de UTI onde o paciente está internado")
+            print("• Unit1: UTI Médica (pacientes clínicos)")
+            print("• Unit2: UTI Cirúrgica/Cardiológica (pacientes cirúrgicos)")
+            
+        elif variable_name == 'Gender':
+            print(f"\nCodificação:")
+            print("• 0 = Feminino")
+            print("• 1 = Masculino")
+            
+        elif variable_name == 'SepsisLabel':
+            print(f"\nVariável alvo do modelo:")
+            print("• 0 = Paciente sem sepse")
+            print("• 1 = Paciente com sepse")
+            print("• Dataset altamente desbalanceado (~98.2% vs 1.8%)")
+            
+    else:
+        print(f"\nVariável '{variable_name}' não encontrada.")
+        print("Variáveis disponíveis:")
+        for var in sorted(descriptions.keys()):
+            print(f"  • {var}")
+
+
+## UCI distribuition and explanation in dataset 
+def explain_units(X_train):
+    """
+    Explica especificamente as variáveis Unit1 e Unit2 com análise detalhada.
+    """
+    print("\n=== EXPLICAÇÃO DAS VARIÁVEIS UNIT1 E UNIT2 ===")
+    
+    descriptions = get_variable_descriptions()
+    
+    print("DESCRIÇÃO DAS VARIÁVEIS:")
+    print(f"• Unit1: {descriptions['Unit1']}")
+    print(f"• Unit2: {descriptions['Unit2']}")
+    
+    print(f"\nCARACTERÍSTICAS IMPORTANTES:")
+    print("• Unit1 e Unit2 são variáveis binárias mutuamente exclusivas")
+    print("• Cada paciente está em exatamente um tipo de UTI")
+    print("• Unit1 + Unit2 = 1 para todos os pacientes")
+    print("• Representam diferentes ambientes clínicos com protocolos distintos")
+    
+    # Análise da distribuição
+    print(f"\nANÁLISE DA DISTRIBUIÇÃO:")
+    unit1_count = X_train['Unit1'].value_counts()
+    unit2_count = X_train['Unit2'].value_counts()
+    
+    print(f"Unit1 (UTI Médica):")
+    print(f"  • Não (0): {unit1_count[0]:,} pacientes ({unit1_count[0]/len(X_train)*100:.1f}%)")
+    print(f"  • Sim (1): {unit1_count[1]:,} pacientes ({unit1_count[1]/len(X_train)*100:.1f}%)")
+    
+    print(f"\nUnit2 (UTI Cirúrgica/Cardiológica):")
+    print(f"  • Não (0): {unit2_count[0]:,} pacientes ({unit2_count[0]/len(X_train)*100:.1f}%)")
+    print(f"  • Sim (1): {unit2_count[1]:,} pacientes ({unit2_count[1]/len(X_train)*100:.1f}%)")
+    
+    # Verificação de complementaridade
+    total_check = (X_train['Unit1'] + X_train['Unit2']).unique()
+    print(f"\nVERIFICAÇÃO DE COMPLEMENTARIDADE:")
+    print(f"• Soma Unit1 + Unit2 = {total_check} (deve ser sempre 1.0)")
+    
+    print(f"\nIMPLICAÇÕES CLÍNICAS:")
+    print("• UTI Médica: Pacientes com condições médicas (pneumonia, sepse, etc.)")
+    print("• UTI Cirúrgica/Cardiológica: Pacientes pós-operatórios ou com problemas cardíacos")
+    print("• Diferentes perfis de risco e protocolos de tratamento")
+    print("• Pode influenciar na apresentação e evolução da sepse")
+
+
+## EDA tasks
 def load_and_prepare_data():
     """Carrega e prepara os dados para análise (assumindo divisão já feita)."""
     print("Carregando dataset de treino...")
@@ -28,11 +212,13 @@ def load_and_prepare_data():
     print(f"Dados carregados - X_train: {X_train.shape}, y_train: {y_train.shape}")
     print(f"Distribuição target: {y_train.value_counts().to_dict()}")
     
+    # Explicar as variáveis Unit1 e Unit2
+    explain_units(X_train)
+    
     return X_train, y_train
 
-def detective_nans(X_train):
+def detetive_nans(X_train):
     """
-    TAREFA 2: O Detetive de NaNs
     Analisar e quantificar os NaNs, visualizar padrões e anotar observações.
     """
     print("\n=== O DETETIVE DE NANS ===")
@@ -125,7 +311,6 @@ def detective_nans(X_train):
 
 def desvendando_categorias(X_train, y_train):
     """
-    TAREFA 3: Desvendando as Categorias
     Escolher 2-3 variáveis categóricas e criar gráficos simples e vs target.
     """
     print("\n=== DESVENDANDO AS CATEGORIAS ===")
@@ -166,17 +351,24 @@ def desvendando_categorias(X_train, y_train):
     
     print(f"\nVariáveis selecionadas para análise: {selected_categorical}")
     
-    # Criar gráficos categóricos
+    # Criar gráficos categóricos com nomes descritivos
     fig, axes = plt.subplots(len(selected_categorical), 2, figsize=(15, 5*len(selected_categorical)))
     if len(selected_categorical) == 1:
         axes = axes.reshape(1, -1)
     
+    # Obter mapeamento de nomes para exibição
+    display_mapping = get_display_names()
+    
     for i, col in enumerate(selected_categorical):
+        # Nome para exibição
+        display_name = display_mapping.get(col, col)
+        
         # Gráfico simples de contagem
         plt.subplot(len(selected_categorical), 2, 2*i + 1)
         counts = X_train[col].value_counts().head(10)
         sns.countplot(data=X_train, x=col, order=counts.index)
-        plt.title(f'Distribuição de {col}')
+        plt.title(f'Distribuição de {display_name}')
+        plt.xlabel(display_name)
         plt.xticks(rotation=45)
         
         # Gráfico Categoria vs. Variável Alvo
@@ -186,7 +378,8 @@ def desvendando_categorias(X_train, y_train):
         temp_df_filtered = temp_df[temp_df['cat'].isin(top_categories)]
         
         sns.countplot(data=temp_df_filtered, x='cat', hue='target')
-        plt.title(f'{col} vs SepsisLabel')
+        plt.title(f'{display_name} vs SepsisLabel')
+        plt.xlabel(display_name)
         plt.xticks(rotation=45)
         plt.legend(title='SepsisLabel', labels=['Não-Sepsis', 'Sepsis'])
     
@@ -196,8 +389,11 @@ def desvendando_categorias(X_train, y_train):
     
     # Anotações
     print(f"\n=== ANOTAÇÕES DAS CATEGORIAS ===")
+    display_mapping = get_display_names()
+    
     for col in selected_categorical:
-        print(f"\n{col}:")
+        display_name = display_mapping.get(col, col)
+        print(f"\n{display_name} ({col}):")
         value_counts = X_train[col].value_counts()
         print(f"   • Valores únicos: {X_train[col].nunique()}")
         print(f"   • Categoria mais frequente: {value_counts.index[0]} ({value_counts.iloc[0]:,} ocorrências)")
@@ -214,7 +410,7 @@ def desvendando_categorias(X_train, y_train):
 
 def conectando_categorias_numeros(X_train, y_train, categorical_cols):
     """
-    TAREFA 4: Conectando Categorias e Números
+    Conectando Categorias e Números
     Escolher uma variável categórica e uma numérica para gráficos mistos.
     """
     print("\n=== CONECTANDO CATEGORIAS E NÚMEROS ===")
@@ -281,8 +477,15 @@ def conectando_categorias_numeros(X_train, y_train, categorical_cols):
             temp_df_filtered = temp_df[temp_df['categorical'].isin(top_categories)]
             
             if len(temp_df_filtered) > 0:
+                # Obter nomes para exibição
+                display_mapping = get_display_names()
+                cat_display_name = display_mapping.get(cat_col, cat_col)
+                num_display_name = display_mapping.get(num_col, num_col)
+                
                 sns.boxplot(data=temp_df_filtered, x='categorical', y='numerical', hue='target')
-                plt.title(f'{num_col} por {cat_col} e SepsisLabel')
+                plt.title(f'{num_display_name} por {cat_display_name} e SepsisLabel')
+                plt.xlabel(cat_display_name)
+                plt.ylabel(num_display_name)
                 plt.xticks(rotation=45)
                 plt.legend(title='SepsisLabel', labels=['Não-Sepsis', 'Sepsis'])
                 
@@ -315,13 +518,18 @@ def conectando_categorias_numeros(X_train, y_train, categorical_cols):
     
     # Anotações
     print(f"\n=== ANOTAÇÕES CATEGORIAS vs NÚMEROS ===")
+    display_mapping = get_display_names()
+    
     for annotation in annotations:
         cat_col = annotation['categorical']
         num_col = annotation['numerical']
         stats = annotation['stats']
         outliers = annotation['outliers']
         
-        print(f"\n{num_col} por {cat_col}:")
+        cat_display_name = display_mapping.get(cat_col, cat_col)
+        num_display_name = display_mapping.get(num_col, num_col)
+        
+        print(f"\n{num_display_name} por {cat_display_name}:")
         print(f"   • Como a distribuição varia entre categorias:")
         
         if len(stats) > 0:
@@ -364,7 +572,7 @@ def analyze_features(df):
                                'Bilirubin_direct', 'Glucose', 'Lactate', 'Magnesium', 'Phosphate', 
                                'Potassium', 'Bilirubin_total', 'TroponinI'],
         'Hematologia': ['Hct', 'Hgb', 'PTT', 'WBC', 'Fibrinogen', 'Platelets'],
-        'Informações Clínicas': ['Age', 'Gender', 'Unit1', 'Unit2', 'HospAdmTime', 'ICULOS', 'Hour']
+        'Informações Clínicas': ['Age', 'Gender', 'UTI_Medica', 'UTI_Cirurgica', 'HospAdmTime', 'ICULOS', 'Hour']
     }
     
     for group_name, group_features in feature_groups.items():
@@ -446,36 +654,31 @@ def sample_feature_analysis(df, numeric_features):
             stats_by_class = df.groupby('SepsisLabel')[feature].agg(['count', 'mean', 'std', 'min', 'max'])
             print(stats_by_class)
 
+
+
+
 def main():
-    """Executa as tarefas 2-4 de EDA estruturado."""
     print("ANÁLISE EXPLORATÓRIA ESTRUTURADA - DATASET DE SEPSIS")
-    print("=" * 60)
-    print("Executando tarefas 2-4 (assumindo que train_test_split já foi feito)")
+    print("AO APARECER UM GRÁFICO, FECHAR A JANELA PARA SALVAR A IMAGEM E CONTINUAR\n")
     
     # Carrega e prepara os dados
     X_train, y_train = load_and_prepare_data()
     
-    # TAREFA 2: O Detetive de NaNs
-    missing_analysis = detective_nans(X_train)
+    # O Detectando NaNs
+    missing_analysis = detetive_nans(X_train)
     
-    # TAREFA 3: Desvendando as Categorias
+    # Desvendando as Categorias
     categorical_vars = desvendando_categorias(X_train, y_train)
     
-    # TAREFA 4: Conectando Categorias e Números
+    # Conectando Categorias e Números
     mixed_analysis = conectando_categorias_numeros(X_train, y_train, categorical_vars)
     
-    print("\n=== EDA ESTRUTURADO CONCLUÍDO ===")
+    print("\n=== EDA CONCLUÍDO ===")
     print("Gráficos salvos:")
     print("   • nans_analysis.png")
     print("   • categorical_analysis.png") 
     print("   • categorical_numerical_analysis.png")
-    
-    print("\nPróximos passos:")
-    print("   1. Revisar as anotações geradas")
-    print("   2. Decidir estratégias de pré-processamento")
-    print("   3. Fazer feature engineering")
-    print("   4. Preparar para modelagem")
-    
+
     return {
         'missing_analysis': missing_analysis,
         'categorical_vars': categorical_vars,
