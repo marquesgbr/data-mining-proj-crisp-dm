@@ -1,3 +1,8 @@
+# Ignore Large files
+dataset_sepsis_test.csv
+dataset_sepsis_train.csv
+dataset_sepsis
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
