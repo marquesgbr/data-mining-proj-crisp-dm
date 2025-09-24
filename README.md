@@ -1,1 +1,1 @@
-# data-minning-proj-crisp-dm
+# data-mining-proj-crisp-dm
