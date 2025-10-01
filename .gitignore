@@ -1,7 +1,7 @@
-# Ignore Large files
+# Ignore Large files (Dataset files)
 dataset_sepsis_test.csv
 dataset_sepsis_train.csv
-dataset_sepsis
+dataset_sepsis 
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
