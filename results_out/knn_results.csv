@@ -1,0 +1,5 @@
+0
+"KNeighborsClassifier(metric='manhattan', n_neighbors=2, weights='distance')"
+""
+"{'algorithm': 'auto', 'leaf_size': 30, 'metric': 'manhattan', 'metric_params': None, 'n_jobs': None, 'n_neighbors': 2, 'p': 2, 'weights': 'distance'}"
+0.1077
