@@ -1,5 +1,5 @@
 # Ignore Large files (Dataset files)
-*.csv
+dataset_sepsis*.csv
 
 # Lecture notebooks
 SMD*.ipynb
