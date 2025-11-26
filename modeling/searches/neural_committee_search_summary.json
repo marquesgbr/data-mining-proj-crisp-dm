@@ -1,0 +1,134 @@
+{
+  "model_name": "Neural_Committee",
+  "best_overall_score": 0.050214433599526764,
+  "best_overall_params": {
+    "activation": "relu",
+    "alpha": 0.027802699362514328,
+    "hidden_layer_sizes": "(200,)",
+    "learning_rate": "constant",
+    "learning_rate_init": 0.006311278821240183,
+    "max_iter": 242,
+    "n_networks": 3,
+    "solver": "adam",
+    "voting": "soft"
+  },
+  "search_config": {
+    "n_searches": 10,
+    "n_iter_per_search": 5,
+    "scoring": "f1",
+    "cv_folds": 5,
+    "total_configurations": 400
+  },
+  "top_10_configs": [
+    {
+      "mean_test_score": 0.050214433599526764,
+      "std_test_score": 0.048340156554472616,
+      "n_networks": 3,
+      "alpha": 0.027802699362514328,
+      "learning_rate_init": 0.006311278821240183,
+      "max_iter": 242,
+      "activation": "relu",
+      "voting": "soft",
+      "hidden_layer_sizes": "(200,)"
+    },
+    {
+      "mean_test_score": 0.043478260869565216,
+      "std_test_score": 0.038888138739126776,
+      "n_networks": 5,
+      "alpha": 0.03196391372400732,
+      "learning_rate_init": 0.004645455173711593,
+      "max_iter": 270,
+      "activation": "tanh",
+      "voting": "soft",
+      "hidden_layer_sizes": "(100, 50)"
+    },
+    {
+      "mean_test_score": 0.042198581560283686,
+      "std_test_score": 0.03766885595713333,
+      "n_networks": 3,
+      "alpha": 0.028564207170989998,
+      "learning_rate_init": 0.0018384385950749507,
+      "max_iter": 200,
+      "activation": "tanh",
+      "voting": "soft",
+      "hidden_layer_sizes": "(300, 200, 200)"
+    },
+    {
+      "mean_test_score": 0.04166480862133036,
+      "std_test_score": 0.03680794395506589,
+      "n_networks": 3,
+      "alpha": 0.025371839272605824,
+      "learning_rate_init": 0.0027180248168744616,
+      "max_iter": 193,
+      "activation": "tanh",
+      "voting": "soft",
+      "hidden_layer_sizes": "(150, 75)"
+    },
+    {
+      "mean_test_score": 0.03497584541062802,
+      "std_test_score": 0.032590046554874366,
+      "n_networks": 5,
+      "alpha": 0.018164879905468743,
+      "learning_rate_init": 0.007942627393742923,
+      "max_iter": 219,
+      "activation": "tanh",
+      "voting": "soft",
+      "hidden_layer_sizes": "(150, 75)"
+    },
+    {
+      "mean_test_score": 0.03497584541062802,
+      "std_test_score": 0.032590046554874366,
+      "n_networks": 3,
+      "alpha": 0.018738225217960824,
+      "learning_rate_init": 0.007212820638220477,
+      "max_iter": 483,
+      "activation": "tanh",
+      "voting": "soft",
+      "hidden_layer_sizes": "(200,)"
+    },
+    {
+      "mean_test_score": 0.03368794326241135,
+      "std_test_score": 0.041262945270322995,
+      "n_networks": 3,
+      "alpha": 0.04172807149053819,
+      "learning_rate_init": 0.003694365014925478,
+      "max_iter": 434,
+      "activation": "relu",
+      "voting": "soft",
+      "hidden_layer_sizes": "(300,)"
+    },
+    {
+      "mean_test_score": 0.03318544809228039,
+      "std_test_score": 0.04770270840507242,
+      "n_networks": 3,
+      "alpha": 0.04942148854588664,
+      "learning_rate_init": 0.006007423319865816,
+      "max_iter": 154,
+      "activation": "relu",
+      "voting": "soft",
+      "hidden_layer_sizes": "(200,)"
+    },
+    {
+      "mean_test_score": 0.026666666666666665,
+      "std_test_score": 0.021773242158072696,
+      "n_networks": 3,
+      "alpha": 0.09398258262710936,
+      "learning_rate_init": 0.0035806083859196884,
+      "max_iter": 303,
+      "activation": "tanh",
+      "voting": "soft",
+      "hidden_layer_sizes": "(25, 25, 25)"
+    },
+    {
+      "mean_test_score": 0.02608695652173913,
+      "std_test_score": 0.034782608695652174,
+      "n_networks": 3,
+      "alpha": 0.013173570457007278,
+      "learning_rate_init": 0.0077182605495405,
+      "max_iter": 330,
+      "activation": "relu",
+      "voting": "soft",
+      "hidden_layer_sizes": "(400,)"
+    }
+  ]
+}
