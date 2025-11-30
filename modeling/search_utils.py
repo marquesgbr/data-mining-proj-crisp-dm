@@ -9,8 +9,10 @@ import matplotlib.pyplot as plt
 import json
 import pickle
 import os
-import os
-from sklearn.model_selection import RandomizedSearchCV
+from sklearn.model_selection import RandomizedSearchCV, StratifiedKFold
+
+# Constante para validação cruzada estratificada padrão
+DEFAULT_CV_STRATEGY = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
 
 
 def plot_search_history(all_search_results, search_results, model_name, metric='mean_test_score'):
