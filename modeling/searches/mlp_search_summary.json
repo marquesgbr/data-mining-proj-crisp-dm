@@ -1,0 +1,111 @@
+{
+  "model_name": "MLP",
+  "best_overall_score": 0.5251830345659626,
+  "best_overall_params": {
+    "activation": "relu",
+    "alpha": 0.09206404629626241,
+    "hidden_layer_sizes": "(100, 100, 100)",
+    "learning_rate": "invscaling",
+    "learning_rate_init": 0.0302435297502903,
+    "max_iter": 538
+  },
+  "search_config": {
+    "n_searches": 20,
+    "n_iter_per_search": 10,
+    "scoring": "f1",
+    "cv_folds": 5,
+    "total_configurations": 200
+  },
+  "top_configs": [
+    {
+      "mean_test_score": 0.5251830345659626,
+      "std_test_score": 0.01422476211571126,
+      "alpha": 0.09206404629626241,
+      "learning_rate_init": 0.0302435297502903,
+      "max_iter": 538,
+      "activation": "relu",
+      "hidden_layer_sizes": "(100, 100, 100)"
+    },
+    {
+      "mean_test_score": 0.5221027484970313,
+      "std_test_score": 0.025719697206921587,
+      "alpha": 0.027202158099276987,
+      "learning_rate_init": 0.03168792286135832,
+      "max_iter": 357,
+      "activation": "relu",
+      "hidden_layer_sizes": "(300, 200, 100, 50)"
+    },
+    {
+      "mean_test_score": 0.5199813547539752,
+      "std_test_score": 0.01611451689977934,
+      "alpha": 0.06724628385628721,
+      "learning_rate_init": 0.07272769777038983,
+      "max_iter": 529,
+      "activation": "relu",
+      "hidden_layer_sizes": "(200, 200, 200, 200)"
+    },
+    {
+      "mean_test_score": 0.5184741921931343,
+      "std_test_score": 0.02645145999837933,
+      "alpha": 0.08164034105617916,
+      "learning_rate_init": 0.08352390710043271,
+      "max_iter": 507,
+      "activation": "tanh",
+      "hidden_layer_sizes": "(200, 300, 100)"
+    },
+    {
+      "mean_test_score": 0.5183572051803065,
+      "std_test_score": 0.02641624272213304,
+      "alpha": 0.028411598183548263,
+      "learning_rate_init": 0.02895696067419089,
+      "max_iter": 465,
+      "activation": "tanh",
+      "hidden_layer_sizes": "(100, 100, 100, 100)"
+    },
+    {
+      "mean_test_score": 0.5181002198063136,
+      "std_test_score": 0.01564361297184626,
+      "alpha": 0.06618786607865525,
+      "learning_rate_init": 0.05665229250802761,
+      "max_iter": 515,
+      "activation": "relu",
+      "hidden_layer_sizes": "(200, 200, 200, 200)"
+    },
+    {
+      "mean_test_score": 0.5180505917098781,
+      "std_test_score": 0.021122312599057728,
+      "alpha": 0.09764005598340487,
+      "learning_rate_init": 0.09714380660677308,
+      "max_iter": 217,
+      "activation": "tanh",
+      "hidden_layer_sizes": "(200, 200, 200)"
+    },
+    {
+      "mean_test_score": 0.517314928294076,
+      "std_test_score": 0.012903274224008837,
+      "alpha": 0.08282267847947414,
+      "learning_rate_init": 0.0013002140924364683,
+      "max_iter": 355,
+      "activation": "relu",
+      "hidden_layer_sizes": "(200, 200, 200, 200)"
+    },
+    {
+      "mean_test_score": 0.5172880989936013,
+      "std_test_score": 0.016532820414573057,
+      "alpha": 0.0910522362423855,
+      "learning_rate_init": 0.03866052827245099,
+      "max_iter": 224,
+      "activation": "tanh",
+      "hidden_layer_sizes": "(200, 200, 200, 200)"
+    },
+    {
+      "mean_test_score": 0.517174625038907,
+      "std_test_score": 0.028340849044269135,
+      "alpha": 0.10388018682667806,
+      "learning_rate_init": 0.057062997416672735,
+      "max_iter": 361,
+      "activation": "tanh",
+      "hidden_layer_sizes": "(200, 300, 100)"
+    }
+  ]
+}
