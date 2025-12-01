@@ -60,8 +60,8 @@ def evaluate_model(model, X_train, X_test, y_train, y_test, model_name):
     return train_metrics, test_metrics, y_test_pred
 
 
-def load_and_prepare_datasets(train_path='../dataset_sepsis_prepared.csv',
-                               test_path='../dataset_sepsis_test_prepared.csv',
+def load_and_prepare_datasets(train_path='../dataset_sepsis_train_pid_prep_v2.csv',
+                               test_path='../dataset_sepsis_test_pid_prep_v2.csv',
                                target_column='SepsisLabel',
                                scale=True):
     """
