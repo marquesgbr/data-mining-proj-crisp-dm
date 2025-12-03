@@ -85,6 +85,58 @@ def plot_search_history(all_search_results, search_results, model_name, metric='
     plt.show()
 
 
+def _debug_committee_config(best_params, estimator):
+    """
+    Mostra informações detalhadas sobre a configuração do comitê de redes neurais
+    
+    Parameters:
+    -----------
+    best_params : dict
+        Melhores parâmetros encontrados nesta busca
+    estimator : estimator object
+        Estimador (para verificar se é NeuralNetworkCommittee)
+    """
+    # Verificar se é um comitê de redes neurais
+    estimator_name = type(estimator).__name__
+    if 'committee' not in estimator_name.lower():
+        return
+    
+    print("  📊 CONFIGURAÇÃO DO COMITÊ:")
+    print(f"     • n_networks: {best_params.get('n_networks', 'N/A')}")
+    print(f"     • voting: {best_params.get('voting', 'N/A')}")
+    print(f"     • solver: {best_params.get('solver', 'N/A')}")
+    
+    # Espaços de amostragem
+    print("  🎲 ESPAÇOS DE AMOSTRAGEM:")
+    
+    alpha_range = best_params.get('alpha_range')
+    if alpha_range:
+        print(f"     • alpha_range: {alpha_range}")
+    
+    lr_range = best_params.get('learning_rate_init_range')
+    if lr_range:
+        print(f"     • learning_rate_init_range: {lr_range}")
+    
+    max_iter_range = best_params.get('max_iter_range')
+    if max_iter_range:
+        print(f"     • max_iter_range: {max_iter_range}")
+    
+    activation_opts = best_params.get('activation_options')
+    if activation_opts:
+        print(f"     • activation_options: {activation_opts}")
+    
+    lr_opts = best_params.get('learning_rate_options')
+    if lr_opts:
+        print(f"     • learning_rate_options: {lr_opts}")
+    
+    # Arquiteturas
+    architectures = best_params.get('hidden_layer_sizes_options')
+    if architectures:
+        print(f"  🏗️  ARQUITETURAS DISPONÍVEIS: {len(architectures)} opções")
+        # Mostrar primeiras 3 como exemplo
+        print(f"     Exemplos: {architectures[:3]}")
+
+
 def multiple_randomized_search(estimator, param_distributions, X, y, cv_strategy, 
                               n_searches=20, n_iter_per_search=80, scoring='f1', 
                               random_state=None, n_jobs=-1, verbose=0):
