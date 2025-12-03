@@ -1,99 +1,99 @@
 {
   "model_name": "RandomForest",
-  "best_overall_score": 0.6278027048886388,
+  "best_overall_score": 0.5949923374169989,
   "best_overall_params": {
-    "max_depth": 27,
+    "max_depth": 40,
     "min_samples_leaf": 1,
     "min_samples_split": 2,
-    "n_estimators": 257
+    "n_estimators": 203
   },
   "search_config": {
     "n_searches": 20,
-    "n_iter_per_search": 30,
+    "n_iter_per_search": 80,
     "scoring": "f1",
     "cv_folds": 5,
-    "total_configurations": 600
+    "total_configurations": 1600
   },
   "top_configs": [
     {
-      "mean_test_score": 0.6278027048886388,
-      "std_test_score": 0.011953279989847956,
-      "n_estimators": 257,
-      "max_depth": 27,
+      "mean_test_score": 0.5949923374169989,
+      "std_test_score": 0.011992657953880981,
+      "max_depth": 40,
+      "min_samples_leaf": 1,
       "min_samples_split": 2,
-      "min_samples_leaf": 1
+      "n_estimators": 203
     },
     {
-      "mean_test_score": 0.6193453682701529,
-      "std_test_score": 0.009605039622092661,
-      "n_estimators": 180,
-      "max_depth": 30,
+      "mean_test_score": 0.5899467145845133,
+      "std_test_score": 0.014192947541701311,
+      "max_depth": 42,
+      "min_samples_leaf": 1,
       "min_samples_split": 3,
-      "min_samples_leaf": 1
+      "n_estimators": 162
     },
     {
-      "mean_test_score": 0.6186874702512822,
-      "std_test_score": 0.008238920659788186,
-      "n_estimators": 212,
+      "mean_test_score": 0.589797565465486,
+      "std_test_score": 0.008862238907811449,
       "max_depth": 43,
-      "min_samples_split": 4,
-      "min_samples_leaf": 1
-    },
-    {
-      "mean_test_score": 0.6149781166273756,
-      "std_test_score": 0.005681246610583954,
-      "n_estimators": 84,
-      "max_depth": 28,
-      "min_samples_split": 3,
-      "min_samples_leaf": 1
-    },
-    {
-      "mean_test_score": 0.6100640335794323,
-      "std_test_score": 0.009129573422409658,
-      "n_estimators": 245,
-      "max_depth": 19,
-      "min_samples_split": 5,
-      "min_samples_leaf": 1
-    },
-    {
-      "mean_test_score": 0.6095624098651345,
-      "std_test_score": 0.01560227084407845,
-      "n_estimators": 142,
-      "max_depth": 43,
-      "min_samples_split": 5,
-      "min_samples_leaf": 1
-    },
-    {
-      "mean_test_score": 0.6079029243354034,
-      "std_test_score": 0.005024380105439009,
-      "n_estimators": 123,
-      "max_depth": 37,
+      "min_samples_leaf": 1,
       "min_samples_split": 2,
-      "min_samples_leaf": 2
+      "n_estimators": 145
     },
     {
-      "mean_test_score": 0.6077747465193022,
-      "std_test_score": 0.015851137250166347,
-      "n_estimators": 97,
-      "max_depth": 39,
-      "min_samples_split": 5,
-      "min_samples_leaf": 1
-    },
-    {
-      "mean_test_score": 0.6070480381299938,
-      "std_test_score": 0.01233859225193792,
-      "n_estimators": 86,
+      "mean_test_score": 0.5896849494629745,
+      "std_test_score": 0.0024681061193295843,
       "max_depth": 32,
+      "min_samples_leaf": 1,
       "min_samples_split": 2,
-      "min_samples_leaf": 2
+      "n_estimators": 131
     },
     {
-      "mean_test_score": 0.607002956246353,
-      "std_test_score": 0.01082476560261319,
-      "n_estimators": 30,
-      "max_depth": 35,
-      "min_samples_split": 3,
-      "min_samples_leaf": 2
+      "mean_test_score": 0.5878403583486695,
+      "std_test_score": 0.009510460842104338,
+      "max_depth": 42,
+      "min_samples_leaf": 1,
+      "min_samples_split": 4,
+      "n_estimators": 105
+    },
+    {
+      "mean_test_score": 0.5877302308763475,
+      "std_test_score": 0.009086924448554188,
+      "max_depth": 39,
+      "min_samples_leaf": 1,
+      "min_samples_split": 2,
+      "n_estimators": 258
+    },
+    {
+      "mean_test_score": 0.587504690111458,
+      "std_test_score": 0.009608328799712759,
+      "max_depth": 32,
+      "min_samples_leaf": 1,
+      "min_samples_split": 2,
+      "n_estimators": 271
+    },
+    {
+      "mean_test_score": 0.5861655949812097,
+      "std_test_score": 0.008680203918832612,
+      "max_depth": 49,
+      "min_samples_leaf": 1,
+      "min_samples_split": 2,
+      "n_estimators": 273
+    },
+    {
+      "mean_test_score": 0.58464152408585,
+      "std_test_score": 0.010993214999611763,
+      "max_depth": 21,
+      "min_samples_leaf": 1,
+      "min_samples_split": 2,
+      "n_estimators": 269
+    },
+    {
+      "mean_test_score": 0.5838731413806726,
+      "std_test_score": 0.004606022298134661,
+      "max_depth": 31,
+      "min_samples_leaf": 1,
+      "min_samples_split": 5,
+      "n_estimators": 267
     }
   ]
 }
