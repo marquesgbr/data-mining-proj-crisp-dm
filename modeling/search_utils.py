@@ -87,7 +87,7 @@ def plot_search_history(all_search_results, search_results, model_name, metric='
 
 def multiple_randomized_search(estimator, param_distributions, X, y, cv_strategy, 
                               n_searches=20, n_iter_per_search=80, scoring='f1', 
-                              random_state=42, n_jobs=-1, verbose=0):
+                              random_state=None, n_jobs=-1, verbose=0):
     """
     Executa múltiplas buscas RandomizedSearchCV e retorna a melhor configuração global
     

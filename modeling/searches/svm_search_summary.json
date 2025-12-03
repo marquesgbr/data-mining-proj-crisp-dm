@@ -1,0 +1,88 @@
+{
+  "model_name": "SVM",
+  "best_overall_score": 0.5222722015692846,
+  "best_overall_params": {
+    "C": 45.844310993266205,
+    "gamma": 0.058608696262893716,
+    "kernel": "rbf"
+  },
+  "search_config": {
+    "n_searches": 20,
+    "n_iter_per_search": 5,
+    "scoring": "f1",
+    "cv_folds": 5,
+    "total_configurations": 100
+  },
+  "top_configs": [
+    {
+      "mean_test_score": 0.5222722015692846,
+      "std_test_score": 0.02848875074692662,
+      "C": 45.844310993266205,
+      "kernel": "rbf",
+      "gamma": 0.058608696262893716
+    },
+    {
+      "mean_test_score": 0.5214654196418352,
+      "std_test_score": 0.03454228290329202,
+      "C": 11.86445500184394,
+      "kernel": "rbf",
+      "gamma": 0.1149112440891582
+    },
+    {
+      "mean_test_score": 0.5111803480633107,
+      "std_test_score": 0.02965549088702225,
+      "C": 20.926569631952304,
+      "kernel": "rbf",
+      "gamma": 0.05844720135900776
+    },
+    {
+      "mean_test_score": 0.5099665538518844,
+      "std_test_score": 0.027255855734207187,
+      "C": 38.661793039402646,
+      "kernel": "rbf",
+      "gamma": 0.08448747256476143
+    },
+    {
+      "mean_test_score": 0.5074471757305854,
+      "std_test_score": 0.031153394853585595,
+      "C": 34.707322057491396,
+      "kernel": "rbf",
+      "gamma": 0.035842990142708905
+    },
+    {
+      "mean_test_score": 0.5055006783495535,
+      "std_test_score": 0.03620649763417326,
+      "C": 45.28398372181214,
+      "kernel": "rbf",
+      "gamma": 0.1149112440891582
+    },
+    {
+      "mean_test_score": 0.5049834232898414,
+      "std_test_score": 0.02804296571960649,
+      "C": 50.15825859796908,
+      "kernel": "rbf",
+      "gamma": 0.03152082935021284
+    },
+    {
+      "mean_test_score": 0.503688239552379,
+      "std_test_score": 0.040483642496677054,
+      "C": 42.012322362204316,
+      "kernel": "rbf",
+      "gamma": 0.1149112440891582
+    },
+    {
+      "mean_test_score": 0.503688239552379,
+      "std_test_score": 0.040483642496677054,
+      "C": 42.01807379956677,
+      "kernel": "rbf",
+      "gamma": 0.1149112440891582
+    },
+    {
+      "mean_test_score": 0.49389991248900317,
+      "std_test_score": 0.01753258628986934,
+      "C": 32.48004931020472,
+      "kernel": "rbf",
+      "gamma": 0.02768166821830372
+    }
+  ]
+}
