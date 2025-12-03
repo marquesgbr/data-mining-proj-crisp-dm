@@ -7,8 +7,24 @@ import numpy as np
 import pandas as pd
 import os
 from sklearn.preprocessing import StandardScaler
-from sklearn.metrics import (accuracy_score, precision_score, recall_score, 
-                            f1_score, roc_auc_score)
+from sklearn.metrics import (precision_score, recall_score, 
+                            f1_score, roc_auc_score, confusion_matrix, accuracy_score)
+
+
+def acsa_score(y_true, y_pred):
+    """Calcula o ACSA (Average Class-Specific Accuracy) para problemas binários
+    
+    ACSA é a média das acurácias específicas de cada classe (sensitividade e especificidade).
+    É mais apropriado para datasets desbalanceados que a acurácia tradicional.
+    
+    ACSA = (Sensitivity + Specificity) / 2
+    """
+    # Sensitivity (recall da classe positiva - sepsis)
+    sensitivity = recall_score(y_true, y_pred, pos_label=1, zero_division=0)
+    # Specificity (recall da classe negativa - sem sepsis)
+    specificity = recall_score(y_true, y_pred, pos_label=0, zero_division=0)
+    # ACSA é a média aritmética de sensitivity e specificity
+    return (sensitivity + specificity) / 2
 
 
 def gmean_score(y_true, y_pred):
