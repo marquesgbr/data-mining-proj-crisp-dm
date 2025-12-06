@@ -65,10 +65,12 @@ def evaluate_model(model, X_train, X_test, y_train, y_test, model_name):
     try:
         y_test_proba = model.predict_proba(X_test)[:, 1]  # Probabilidade da classe positiva
         test_metrics['auc_roc'] = roc_auc_score(y_test, y_test_proba)
-        
+        # test_metrics['y_pred_proba'] = y_test_proba
+
         # AUC-ROC para treino também
         y_train_proba = model.predict_proba(X_train)[:, 1]
         train_metrics['auc_roc'] = roc_auc_score(y_train, y_train_proba)
+        # train_metrics['y_pred_proba'] = y_train_proba
     except Exception as e:
         test_metrics['auc_roc'] = None
         train_metrics['auc_roc'] = None
